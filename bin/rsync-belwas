@@ -1,0 +1,17 @@
+#!/usr/bin/ruby
+
+# Take in list of arguments
+# Arg1 is the repo name (also the directory that must exist in ~/ on remote server)
+# Arg2- is/are the file(s) that need to be rsynced
+
+if ARGV.length < 2
+	puts "2 or more arguments are required"
+	exit
+end
+
+repo = ARGV.shift
+
+ARGV.each do |file|
+	puts "rsyncing #{file} to belwas:~/#{repo}/#{file}"
+	system("rsync -a --delete #{file} belwas:~/#{repo}/#{file}")
+end

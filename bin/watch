@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Define watchman triggers here...
+
+# scp-on-save for all clj files in reflow
+watchman -- trigger ~/src/reflow reflow "**/*clj" "**/*cljc" -- rsync-belwas reflow
+
+# scp-on-save for all clj files in ads
+watchman -- trigger ~/src/ads ads "**/*clj" "**/*cljc" -- rsync-belwas ads
